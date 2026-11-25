@@ -35,7 +35,7 @@ the terminal.
 3. Demo Login Credentials
 Use the following demo accounts:
   Role              Login URL                                
-  Customer          http://localhost:4200/login/customer   customer@shopkart.com   Customer@123
+  Customer          http://localhost:4200/login/   customer@shopkart.com   Customer@123
 
 The login form also checks the role associated with the selected login
 route.
@@ -121,8 +121,6 @@ ng serve
 
 # Build the application
 ng build
-
-
 
 # Generate a component
 ng generate component component-name
