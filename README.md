@@ -40,18 +40,17 @@ Use the following demo accounts:
 The login form also checks the role associated with the selected login
 route.
 4. Main Application URLs
-  Page                 URL                     Access
- 
-Customer login       /login       Public
+  Page                 URL                    
+Customer login       /login       
 
 
-Customer dashboard   /dashboard   Customer
+Customer dashboard   /dashboard  
 
-Customer products    /products    Customer
+Customer products    /products    
 
 Example full URL for customer products:
 
-http://localhost:4200/customer/products
+http://localhost:4200/products
 
 Routes such as /orders and /customers are also present in the
 current route configuration. Their access restrictions should be
