@@ -34,22 +34,20 @@ If your development server uses a different port, use the URL printed in
 the terminal.
 3. Demo Login Credentials
 Use the following demo accounts:
-  Role              Login URL                                Email                     Password
-  Admin             http://localhost:4200/login/admin      admin@shopkart.com      Admin@123
-
+  Role              Login URL                                
   Customer          http://localhost:4200/login/customer   customer@shopkart.com   Customer@123
-Seller            http://localhost:4200/login/seller     seller@shopkart.com     Seller@123
+
 The login form also checks the role associated with the selected login
 route.
 4. Main Application URLs
   Page                 URL                     Access
-  Admin login          /login/admin          Public
-Customer login       /login/customer       Public
-Seller login         /login/seller         Public
-Admin dashboard      /admin/dashboard      Admin
-Customer dashboard   /customer/dashboard   Customer
-Seller dashboard     /seller/dashboard     Seller
-Customer products    /customer/products    Customer
+ 
+Customer login       /login       Public
+
+
+Customer dashboard   /dashboard   Customer
+
+Customer products    /products    Customer
 
 Example full URL for customer products:
 
@@ -124,8 +122,7 @@ ng serve
 # Build the application
 ng build
 
-# Run unit tests
-ng test
+
 
 # Generate a component
 ng generate component component-name
