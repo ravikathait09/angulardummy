@@ -1,0 +1,116 @@
+<div class="api-section">
+
+  <h2>ShopKart API Products</h2>
+ 
+
+  <!-- Search -->
+  <div class="search-box">
+
+    <input
+      type="text"
+      placeholder="Search products..."
+      [(ngModel)]="searchText"
+      (keyup.enter)="searchProducts()"
+    />
+
+    <button
+      type="button"
+      (click)="searchProducts()"
+      [disabled]="apiLoading"
+    >
+      Search
+    </button>
+
+    <button
+      type="button"
+      (click)="searchText = ''; searchProducts()"
+      [disabled]="apiLoading"
+    >
+      Clear
+    </button>
+
+  </div>
+
+  <!-- Loading 
+  @if (apiLoading) {
+    <p>Loading products...</p>
+  }-->
+
+  <!-- Error -->
+  @if (apiError) {
+    <p class="error-message">{{ apiError }}</p>
+  }
+
+  <!-- Product Table -->
+  @if (!apiLoading && apiProducts.length > 0) {
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Rating</th>
+          <th>Stock</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        @for (product of apiProducts; track product.id) {
+
+          <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.title }}</td>
+            <td>₹{{ product.price }}</td>
+            <td>{{ product.rating }}</td>
+            <td>{{ product.stock }}</td>
+          </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+
+  }
+
+  @if (!apiLoading && apiProducts.length === 0 && !apiError) {
+    <p>No products found.</p>
+  }
+
+  <!-- Pagination -->
+  @if (totalProducts > 0) {
+
+    <div class="pagination">
+
+      <button
+        type="button"
+        (click)="previousPage()"
+        [disabled]="currentPage === 1 || apiLoading"
+      >
+        Previous
+      </button>
+
+      <span>
+        Page {{ currentPage }} of {{ totalPages }}
+      </span>
+
+      <button
+        type="button"
+        (click)="nextPage()"
+        [disabled]="currentPage >= totalPages || apiLoading"
+      >
+        Next
+      </button>
+
+    </div>
+
+    <p>
+      Total Products: {{ totalProducts }}
+    </p>
+
+  }
+
+</div>

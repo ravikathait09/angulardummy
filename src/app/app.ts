@@ -1,12 +1,38 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
+import { Header } from './shared/components/header/header';
+import { Sidebar } from './shared/components/sidebar/sidebar';
+import { Footer } from './shared/components/footer/footer';
+import { filter } from 'rxjs';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.css',
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    Header,
+    Sidebar,
+    Footer
+  ],
   templateUrl: './app.html',
+  styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('shopcart');
+
+  isAuthPage = true;
+
+  constructor(private router: Router) {
+
+    this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd)
+      )
+      .subscribe(() => {
+
+        this.isAuthPage =
+          this.router.url.startsWith('/login');
+
+      });
+
+  }
 }

@@ -1,0 +1,27 @@
+
+<header class="header">
+  <div class="logo">ShopKart</div>
+
+  <div class="header-right">
+    <input type="text" placeholder="Search..." />
+    <span>🔔</span>
+    @if (currentUser) {
+
+      <div class="user-info">
+
+        <span>{{ currentUser.name }}</span>
+
+        <span class="user-role">
+          {{ currentUser.role | uppercase }}
+        </span>
+
+        <button (click)="logout()">
+          Logout
+        </button>
+
+      </div>
+
+    }
+   
+  </div>
+</header>
